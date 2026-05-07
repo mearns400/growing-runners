@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Growing Runners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+  :root {
+    --bg:     #0F1B2D;
+    --ink:    #EDE8DA;
+    --soft:   #B8B0A0;
+    --mute:   #6E7A8C;
+    --rule:   #1F2D44;
+    --accent: #D89A5A;
+    --serif:  "Newsreader", Georgia, serif;
+    --mono:   "IBM Plex Mono", ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+  img { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 40px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mast {
+    padding: 32px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mast img { height: 22px; opacity: 0.9; }
+  .mast b {
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+  }
+  .mast nav {
+    margin-left: auto;
+    display: flex;
+    gap: 18px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--mute);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+  }
+  .mast nav a.active { color: var(--ink); }
+
+  main { padding: 64px 0 32px; flex: 1; }
+
+  p {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0 0 18px;
+    max-width: 36em;
+  }
+  p.muted { color: var(--soft); }
+  p:last-child { margin-bottom: 0; }
+
+  footer {
+    padding: 24px 0 32px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--mute);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="mast">
+    <img src="assets/logo-cr-white.png" alt="" />
+    <b>Growing Runners</b>
+    <nav>
+      <a href="index.html" class="active">home</a>
+      <a href="blog.html">blog</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>Growing Runners is a 501(c)(3) my dad started years ago. He mixed theology and philosophy into his coaching and saved a lot of writing along the way.</p>
+    <p class="muted">I'm slowly going through what he left behind, seeing how it might apply to my own life and running. More here when there's something to share.</p>
+  </main>
+
+  <footer>
+    <span>501(c)(3)</span>
+    <a href="/cdn-cgi/l/email-protection#670f020b0b0827001508100e09001512090902151449081500"><span class="__cf_email__" data-cfemail="8ae2efe6e6e5caedf8e5fde3e4edf8ffe4e4eff8f9a4e5f8ed">[email&#160;protected]</span></a>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

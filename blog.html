@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Body, Mind, Spirit — In That Order · Growing Runners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+  :root {
+    --bg:     #0F1B2D;
+    --ink:    #EDE8DA;
+    --soft:   #B8B0A0;
+    --mute:   #6E7A8C;
+    --rule:   #1F2D44;
+    --accent: #D89A5A;
+    --serif:  "Newsreader", Georgia, serif;
+    --mono:   "IBM Plex Mono", ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+  img { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 40px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mast {
+    padding: 32px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mast img { height: 22px; opacity: 0.9; }
+  .mast b {
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+  }
+  .mast nav {
+    margin-left: auto;
+    display: flex;
+    gap: 18px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--mute);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+  }
+  .mast nav a.active { color: var(--ink); }
+
+  main {
+    padding: 56px 0 32px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    position: sticky;
+    top: 32px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+  .toc .label {
+    margin: 0 0 10px;
+    color: var(--mute);
+    text-transform: lowercase;
+    letter-spacing: 0.06em;
+  }
+  .toc .post-title {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink);
+    margin: 0 0 18px;
+    line-height: 1.3;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+    text-transform: none;
+    letter-spacing: -0.005em;
+  }
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .toc li a {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 8px;
+    color: var(--soft);
+    border-left: 1px solid transparent;
+    padding-left: 8px;
+    margin-left: -9px;
+    transition: color 120ms, border-color 120ms;
+  }
+  .toc li a .num { color: var(--mute); }
+  .toc li a:hover { color: var(--ink); }
+  .toc li a.active {
+    color: var(--ink);
+    border-left-color: var(--accent);
+  }
+  .toc li a.active .num { color: var(--accent); }
+
+  /* ---------- Article ---------- */
+  article {
+    max-width: 38em;
+  }
+  article header.post-head {
+    margin-bottom: 40px;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+  }
+  article h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(34px, 4.6vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .deck {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.45;
+    color: var(--soft);
+    margin: 0 0 22px;
+    text-wrap: pretty;
+  }
+  .byline {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  article h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin: 48px 0 16px;
+    text-wrap: balance;
+  }
+  article h2 .h-num {
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  article p {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+  article p.lede::first-line {
+    /* small-caps treatment for opening words handled via span */
+  }
+  article p .smallcaps {
+    font-family: var(--mono);
+    font-size: 0.7em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-right: 6px;
+  }
+  article em { font-style: italic; color: var(--ink); }
+
+  article blockquote {
+    margin: 24px 0 24px;
+    padding: 4px 0 4px 22px;
+    border-left: 2px solid var(--accent);
+    font-style: italic;
+    color: var(--soft);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  article blockquote p { margin: 0 0 12px; font-size: 18px; }
+  article blockquote p:last-child { margin-bottom: 0; }
+  article blockquote strong {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 6px;
+  }
+
+  article hr {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 40px 0;
+    width: 60px;
+  }
+
+  .endnote {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--mute);
+    font-style: normal;
+  }
+
+  .ai-note {
+    margin: 4px 0 28px;
+    padding: 16px 18px;
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--accent);
+    border-radius: 2px;
+    background: rgba(255,255,255,0.015);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--soft);
+  }
+  .ai-note .tag {
+    display: inline-block;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 10.5px;
+    margin-right: 8px;
+  }
+
+  footer {
+    padding: 32px 0 32px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--mute);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 760px) {
+    main {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .toc {
+      position: static;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="mast">
+    <img src="assets/logo-cr-white.png" alt="" />
+    <b>Growing Runners</b>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="blog.html" class="active">blog</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <aside class="toc">
+      <div class="label">contents</div>
+      <div class="post-title">Body, Mind, Spirit — In That Order</div>
+      <ol>
+        <li><a href="#meander"><span class="num">01</span><span>A life that meandered on purpose</span></a></li>
+        <li><a href="#theologian"><span class="num">02</span><span>The theologian who wouldn't have called himself one</span></a></li>
+        <li><a href="#anthropology"><span class="num">03</span><span>A coaching system that was secretly an anthropology</span></a></li>
+        <li><a href="#stands"><span class="num">04</span><span>A man who took stands</span></a></li>
+        <li><a href="#father"><span class="num">05</span><span>A father, above all</span></a></li>
+        <li><a href="#take"><span class="num">06</span><span>What I take from it</span></a></li>
+      </ol>
+    </aside>
+
+    <article id="post-1">
+      <header class="post-head">
+        <div class="kicker">Essay · No. 01</div>
+        <h1>Body, Mind, Spirit — In That Order</h1>
+        <p class="deck">I had AI write this from the documents my dad left behind — it's representative of what I'm learning about him as I piece through his work this way.</p>
+        <div class="byline">
+          <span>Sources: his own writing</span>
+          <span>~ 12 min read</span>
+        </div>
+      </header>
+
+      <p>I knew my father was a coach. I knew he was a runner, a lawyer, an agent who had once sat across the table from some of the great middle-distance athletes of his generation. I knew, in the way kids know these things, that he read a lot and thought hard about questions most people don't bother with. What I didn't know — not really, not the way I do now — was how completely all of those threads were stitched into a single piece of cloth.</p>
+
+      <p>Sitting down with the folder of his work he left behind — the <em>Growing Runners Handbook</em>, the <em>Socrates &amp; Sports Agents</em> lecture, the talk he gave in Assisi in 2018 on spirituality and sustainability, his philosophy notes — I started to see him the way he saw himself. Less as a man with a series of careers, more as a teacher with one long vocation that kept finding new shapes.</p>
+
+      <p>This is what I learned.</p>
+
+      <h2 id="meander"><span class="h-num">§ 01</span>A life that meandered on purpose</h2>
+
+      <p>In the Assisi talk he quoted Michael Murphy: <em>"evolution meanders."</em> He liked that line, and then he applied it to his own résumé without apology — son, brother, scholar, athlete, coach, teacher, attorney, husband, sports agent, father, coach again, entrepreneur, attorney again, coach again. He didn't see those pivots as restlessness. He saw them as a kind of fidelity — answering whatever was asking to be answered next.</p>
+
+      <p>The bones of it were these: oldest of nine, son of Pat and Ted Mearns (to whom he dedicated the Handbook). High school running at Evanston in Illinois. Yale, where he ran for the legendary Bob Giegengack. Coaching at Kentucky, then UVa, where in 1978 — just as Title IX was changing the shape of American collegiate sport — he had more women's cross-country All-Americans than any other coach in the country. Then law school, Jones Day, and a jump to IMG, where he became one of the youngest officers in the world's largest sports agency, representing Sebastian Coe, Alberto Salazar, Bill Rodgers, Mary Decker, Anne Audain, Rob de Castella, Eamonn Coghlan, Craig Virgin — and Ben Johnson.</p>
+
+      <p>The Ben Johnson story is the one he told most plainly, because it cost him the most. The 1988 Seoul disqualification ate roughly half a million dollars of contracts and commissions in a weekend. He doesn't dress it up in his writing. He doesn't really blame anyone but the system and himself. Soon after, he left the money side of the sport, moved his family to New Zealand for six months, re-read his philosophy and theology, and came back as — in his own words — "an agent of a different kind."</p>
+
+      <h2 id="theologian"><span class="h-num">§ 02</span>The theologian who wouldn't have called himself one</h2>
+
+      <p>He didn't write systematic theology. But he thought theologically, which is to say he was unable to stop asking what running and coaching and money in sport had to do with who we are.</p>
+
+      <p>The names that show up in his work aren't decorative. Plato, Aristotle, Sri Aurobindo, Saint Francis, Chesterton, Thomas Berry, Camus, Bonhoeffer, the Buddha, Kahlil Gibran. Two passages he came back to constantly: Socrates' line that "for man to succeed in life, God provided him with two means, education and physical activity… Not separately, one for the soul and the other for the body, but for the two together." And Sri Aurobindo's vision of sport as a field for "the development of habits, capacities, and qualities greatly needed and of the utmost service to a people in war or in peace." He believed those weren't quaint old ideas. He believed they were a working program.</p>
+
+      <p>The 2005 <em>Socrates &amp; Sports Agents</em> lecture, which he gave at William &amp; Mary, is the clearest piece of philosophical writing he left. It's organized around the Socratic triad of the Good, the Beautiful, and the True, and he uses three episodes from his own agent career to examine each — the Margaret Groos under-the-table prize money story (the Good), the Allison Roe / Anne Audain contrast between glamour and depth (the Beautiful), and the Ben Johnson collapse (the True). The line that ends the talk is the line that ends a lot of his writing in spirit: <em>"I believe everything is personal."</em> You can hear him repudiating his younger super-agent self there — the one who once told <em>Runner's World</em>, "We are not here to be friends."</p>
+
+      <h2 id="anthropology"><span class="h-num">§ 03</span>A coaching system that was secretly an anthropology</h2>
+
+      <p>If you only read the table of contents of the <em>Growing Runners Handbook</em>, you'd think it's a training manual. Twelve Bedrock Principles: Readiness-For, the Wide-Perimeter, Integrating Speed, Simulation, Progression, Work/Play/Fartlek, On Track, Cultivating Speed, the Support System Triad, Competing, Preparation Through Reflection, Power Sources. Sensible stuff. Useful for any cross-country parent.</p>
+
+      <p>But the rules underneath those principles are not really about workouts. They're his two laws:</p>
+
+      <blockquote>
+        <p><strong>Rule 1.</strong>Parents — and the strength of the relationship with their kids — are the keys to their kids' distance running success.</p>
+        <p><strong>Rule 2.</strong>The training principles that help make someone a better runner are the very same things that make them a better person.</p>
+      </blockquote>
+
+      <p>And the structural principle of the whole book is something he stated explicitly in the Assisi talk: <em>"As I see it: Spirit, Mind, Body. As I coach: Body, Mind, Spirit. In that order."</em> In other words, the Handbook is an inverted contemplative path. You train the body honestly. The mind follows. The spirit is what shows up at the end, and what you were actually after the whole time.</p>
+
+      <p>He says it more humbly in the epigraph he gave himself in the Handbook:</p>
+
+      <blockquote>
+        <p><em>The very same training principles that make me a better runner also make me a better person.</em> — Coach Mearns</p>
+      </blockquote>
+
+      <p>I read that line a hundred times growing up without really hearing it. I hear it now.</p>
+
+      <h2 id="stands"><span class="h-num">§ 04</span>A man who took stands</h2>
+
+      <p>The thread I keep pulling on is how often, and how quietly, he took unpopular stands. Helping a young Margaret Groos collect prize money Fred Lebow had refused her. Walking away from IMG. Walking away from Heritage Sports. Refusing to spin the Ben Johnson story. Choosing, in middle age, to leave a profession that paid him well in order to teach high school philosophy and coach his own kids.</p>
+
+      <p>He wrote that "living ethically is about taking a stand — about acknowledging the importance of perspective." And then: "the stands we take tell us less about what's right or what's wrong, than about who and what we really are." There's a Kierkegaardian streak in him there that I never noticed when he was alive, and probably wouldn't have understood if I had.</p>
+
+      <h2 id="father"><span class="h-num">§ 05</span>A father, above all</h2>
+
+      <p>The dedication of the Handbook is to his parents, but the whole second half of his career is dedicated, in practice, to his children. Five of us. He framed the entire founding insight of <em>Growing Runners</em> — that workouts alone don't work, that what matters is the quality of the relationship the runner has with parent, coach, teammate, and self — as something he discovered by watching us run. By not knowing what to say. By figuring out, slowly and with a lot of false starts, how to bring his knowledge and his love into our running in a way that actually helped.</p>
+
+      <p>He named the project <em>Growing Runners</em> because, he said, the phrase describes both the work (you grow runners) and the runners themselves (they are growing). The pun is also a small piece of theology. Growth is the noun and the verb. The athlete and the coaching. The body and what's happening inside it.</p>
+
+      <h2 id="take"><span class="h-num">§ 06</span>What I take from it</h2>
+
+      <p>He used to talk about Socrates' famous proposal at his own trial — that the appropriate "reward" for a life spent teaching the young to look to themselves and seek virtue would be lifetime support at the public table. The Athenians chose the hemlock instead. My dad ended his Williamsburg lecture with a wish that we'd made some progress in the 2,500 years since.</p>
+
+      <p>Reading his work now, I think the progress he was after wasn't really historical. It was the slow, patient work of getting one person at a time — one runner, one parent, one student, one client, one son — to see that the body, the mind, and the spirit are not separate projects. That the workout is the prayer. That the relationship is the engine. That everything is personal.</p>
+
+      <p>That's the project. That was the man.</p>
+
+      <p>He would have called it <em>play</em>.</p>
+
+      <hr />
+
+      <p class="endnote">Authorship · This essay was generated by an AI (Claude) from primary source documents my father left behind: the <em>Growing Runners Handbook</em>, the <em>Socrates &amp; Sports Agents</em> lecture (William &amp; Mary, 2005), the <em>Spirituality &amp; Sustainability</em> talk (Assisi, 2018), and his philosophy notes. I'm publishing it as-is because it represents how I'm coming to know him — by feeding what he wrote into a model and reading what comes back — more than as a finished piece of my own writing. Quoted phrases attributed to him are from his documents; the connective prose, framing, and analysis are the model's.</p>
+    </article>
+
+  </main>
+
+  <footer>
+    <span>501(c)(3)</span>
+    <a href="/cdn-cgi/l/email-protection#b1d9d4dddddef1d6c3dec6d8dfd6c3c4dfdfd4c3c29fdec3d6"><span class="__cf_email__" data-cfemail="3d55585151527d5a4f524a54535a4f485353584f4e13524f5a">[email&#160;protected]</span></a>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll-spy: highlight TOC entry for section currently in view.
+  (function () {
+    const links = Array.from(document.querySelectorAll('.toc a[href^="#"]'));
+    const map = new Map();
+    links.forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) map.set(el, a);
+    });
+    if (!map.size) return;
+
+    const setActive = (a) => {
+      links.forEach(l => l.classList.toggle('active', l === a));
+    };
+    setActive(links[0]);
+
+    const io = new IntersectionObserver((entries) => {
+      // Pick the topmost intersecting section.
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible[0]) {
+        const a = map.get(visible[0].target);
+        if (a) setActive(a);
+      }
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+
+    map.forEach((_, el) => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
