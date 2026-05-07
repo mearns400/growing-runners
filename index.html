@@ -17,6 +17,7 @@
     --accent: #D89A5A;
     --serif:  "Newsreader", Georgia, serif;
     --mono:   "IBM Plex Mono", ui-monospace, monospace;
+    --mast-h: 80px;
   }
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -42,12 +43,17 @@
     flex-direction: column;
   }
 
-  /* ---------- Masthead ---------- */
+  /* ---------- Masthead (sticky) ---------- */
   .mast {
-    padding: 32px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    padding: 24px 0;
     display: flex;
     align-items: center;
     gap: 12px;
+    border-bottom: 1px solid var(--rule);
   }
   .mast img { height: 28px; width: auto; opacity: 0.95; }
   .mast b {
@@ -72,7 +78,7 @@
   /* ---------- Main holds both sections ---------- */
   main {
     flex: 1;
-    padding: 0 0 32px;
+    padding: 0;
   }
 
   /* ---------- Shared layout grid (two columns) ---------- */
@@ -84,10 +90,14 @@
   }
   .layout__main { max-width: 38em; }
 
-  /* ---------- Home section ---------- */
+  /* ---------- Home section (full viewport) ---------- */
   .section--home {
-    padding: 80px 0 96px;
+    min-height: calc(100vh - var(--mast-h));
+    display: grid;
+    align-content: center;
+    padding: 40px 0;
     border-bottom: 1px solid var(--rule);
+    scroll-margin-top: var(--mast-h);
   }
   .section-label {
     font-family: var(--mono);
@@ -108,13 +118,15 @@
 
   /* ---------- Blog section ---------- */
   .section--blog {
-    padding: 64px 0 32px;
+    min-height: calc(100vh - var(--mast-h));
+    padding: 64px 0 64px;
+    scroll-margin-top: var(--mast-h);
   }
 
   /* TOC */
   .toc {
     position: sticky;
-    top: 32px;
+    top: calc(var(--mast-h) + 24px);
     font-family: var(--mono);
     font-size: 11.5px;
     line-height: 1.5;
