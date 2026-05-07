@@ -6,7 +6,7 @@
 <title>Growing Runners</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400&display=swap">
 <style>
   :root {
     --bg:     #0F1B2D;
@@ -33,7 +33,7 @@
   img { display: block; max-width: 100%; }
 
   .wrap {
-    max-width: 560px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 clamp(20px, 5vw, 40px);
     min-height: 100vh;
@@ -47,7 +47,7 @@
     align-items: center;
     gap: 12px;
   }
-  .mast img { height: 22px; opacity: 0.9; }
+  .mast img { height: 28px; width: auto; opacity: 0.95; }
   .mast b {
     font-weight: 400;
     font-size: 15px;
@@ -65,20 +65,26 @@
   }
   .mast nav a.active { color: var(--ink); }
 
-  main { padding: 64px 0 32px; flex: 1; }
+  main {
+    padding: 56px 0 32px;
+    flex: 1;
+    width: 100%;
+    max-width: 38em;
+    margin: 0 auto;
+  }
 
   p {
     font-size: 19px;
-    line-height: 1.55;
+    line-height: 1.65;
     color: var(--ink);
-    margin: 0 0 18px;
+    margin: 0 0 20px;
     max-width: 36em;
   }
   p.muted { color: var(--soft); }
   p:last-child { margin-bottom: 0; }
 
   footer {
-    padding: 24px 0 32px;
+    padding: 32px 0 32px;
     font-family: var(--mono);
     font-size: 12px;
     color: var(--mute);
@@ -94,7 +100,7 @@
 <div class="wrap">
 
   <header class="mast">
-    <img src="assets/logo-cr-white.png" alt="" />
+    <img src="logo.png" alt="Growing Runners logo" />
     <b>Growing Runners</b>
     <nav>
       <a href="index.html" class="active">home</a>
@@ -109,10 +115,10 @@
 
   <footer>
     <span>501(c)(3)</span>
-    <a href="/cdn-cgi/l/email-protection#670f020b0b0827001508100e09001512090902151449081500"><span class="__cf_email__" data-cfemail="8ae2efe6e6e5caedf8e5fde3e4edf8ffe4e4eff8f9a4e5f8ed">[email&#160;protected]</span></a>
+    <a href="mailto:hello@growingrunners.org">hello@growingrunners.org</a>
   </footer>
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</body>
 </html>
